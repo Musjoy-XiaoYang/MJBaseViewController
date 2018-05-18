@@ -1,0 +1,21 @@
+{
+  "name": "MJBaseViewController",
+  "version": "0.1.0",
+  "summary": "This module contain base class of view controller and some common use function.",
+  "homepage": "https://github.com/Musjoy/MJBaseViewController",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ylpodul@163.com": "ylpodul@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/ylpodul@163.com/MJBaseViewController.git",
+    "tag": "v-0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MJBaseViewController/Classes/**/*"
+}

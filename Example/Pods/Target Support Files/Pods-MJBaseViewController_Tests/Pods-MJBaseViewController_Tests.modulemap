@@ -1,0 +1,6 @@
+framework module Pods_MJBaseViewController_Tests {
+  umbrella header "Pods-MJBaseViewController_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
