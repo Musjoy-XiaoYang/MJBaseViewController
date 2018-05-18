@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  MJBaseViewController
 //
-//  Created by ylpodul@163.com on 02/27/2018.
-//  Copyright (c) 2018 ylpodul@163.com. All rights reserved.
+//  Created by Musjoy-XiaoYang on 05/18/2018.
+//  Copyright (c) 2018 Musjoy-XiaoYang. All rights reserved.
 //
 
 import UIKit

@@ -20,74 +20,11 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udC-Xq-y2r">
-                                <rect key="frame" x="205" y="280" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F3I-3V-xFe">
-                                <rect key="frame" x="160" y="391" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <connections>
-                        <outlet property="sd" destination="udC-Xq-y2r" id="ozC-0t-gj7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-346" y="26"/>
-        </scene>
-        <!--Test View Controller-->
-        <scene sceneID="REi-h2-BN5">
-            <objects>
-                <viewController storyboardIdentifier="TestViewController" id="7bE-J3-7KA" customClass="TestViewController" customModule="MJBaseViewController_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ewi-8c-JoL"/>
-                        <viewControllerLayoutGuide type="bottom" id="Uh2-mA-hsN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Gy7-RV-MOA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNa-yg-kdS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XO6-Rw-zjA">
-                                        <rect key="frame" x="82" y="151" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="qNa-yg-kdS" firstAttribute="top" secondItem="Gy7-RV-MOA" secondAttribute="top" id="P9f-Xv-zCe"/>
-                            <constraint firstItem="qNa-yg-kdS" firstAttribute="leading" secondItem="Gy7-RV-MOA" secondAttribute="leading" id="eKW-T9-v6M"/>
-                            <constraint firstAttribute="bottom" secondItem="qNa-yg-kdS" secondAttribute="bottom" id="f2f-SQ-B1e"/>
-                            <constraint firstAttribute="trailing" secondItem="qNa-yg-kdS" secondAttribute="trailing" id="h72-zR-VBj"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="lytBottom" destination="f2f-SQ-B1e" id="T0v-JK-QZI"/>
-                        <outlet property="lytTop" destination="P9f-Xv-zCe" id="It4-4Y-c0Q"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aNR-qt-P8q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="393" y="10"/>
         </scene>
     </scenes>
 </document>
