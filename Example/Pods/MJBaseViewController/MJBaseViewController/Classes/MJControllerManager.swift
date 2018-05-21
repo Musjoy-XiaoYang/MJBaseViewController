@@ -5,27 +5,34 @@
 //  Created by Podul on 2018/2/27.
 //
 
-import Foundation
+import UIKit
 
-
-
-public struct MJControllerManager {
-    static var s_topWindow: UIWindow?
-    static var dicVCs = [String: UIViewController]()
-    
+public class MJControllerManager: NSObject {
+    var s_topWindow: UIWindow?
     lazy var dicForListVC = [String: Any]()
     var viewShareMask: UIView?
-    private init() { }
+    lazy var dicVCs = [String: UIViewController]()
+    
     public static let shared = MJControllerManager()
+    private override init() {
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: .changeKeyWindow, name: .UIWindowDidBecomeKey, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .UIWindowDidBecomeKey, object: nil)
+    }
 }
+
+
 
 // MARK: - Window 相关
 extension MJControllerManager {
     public static var topWindow: UIWindow? {
-        if MJControllerManager.s_topWindow == nil {
-            MJWindowManager.shared.changeKeyWindow()
+        if MJControllerManager.shared.s_topWindow == nil {
+            MJControllerManager.shared.changeKeyWindow()
         }
-        return MJControllerManager.s_topWindow
+        return MJControllerManager.shared.s_topWindow
     }
     
     public static var mainWindow: UIWindow? {
@@ -73,7 +80,7 @@ extension MJControllerManager {
     
     /// 最顶层容器界面
     public static var topContainerController: UINavigationController? {
-        var topVC = topWindow?.rootViewController
+        var topVC = self.topWindow?.rootViewController
         var presentVC = topVC?.presentedViewController
         while presentVC != nil {
             topVC = presentVC
@@ -119,13 +126,13 @@ extension MJControllerManager {
     }
     
     public static func getUniqueViewController(name aVCName: String) -> UIViewController? {
-        var aVC = dicVCs[aVCName]
+        var aVC = shared.dicVCs[aVCName]
         if aVC != nil {
             return aVC
         }
         aVC = getViewController(name: aVCName)
         if aVC != nil {
-            dicVCs[aVCName] = aVC
+            shared.dicVCs[aVCName] = aVC
         }
         return aVC
     }
@@ -158,25 +165,8 @@ extension MJControllerManager {
     }
 }
 
-
-
-
-
-/// Private
-private class MJWindowManager: NSObject {
-    static let shared = MJWindowManager()
-    private override init() {
-        super.init()
-        NotificationCenter.default.addObserver(self, selector: .changeKeyWindow, name: .UIWindowDidBecomeKey, object: nil)
-    }
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .UIWindowDidBecomeKey, object: nil)
-    }
-}
-
-
 // MARK: -  Action
-@objc private extension MJWindowManager {
+@objc extension MJControllerManager {
     // MARK: - Notification
     func changeKeyWindow(_ notification: Notification? = nil) {
         let mainWindow = MJControllerManager.mainWindow
@@ -186,41 +176,30 @@ private class MJWindowManager: NSObject {
                 ($0.windowLevel > $1.windowLevel)
             }
             // Swift 特性，不知道有没有用
-            for aWindow in windows where
-                aWindow.isKind(of: NSClassFromString("UITextEffectsWindow")!) &&
-                    aWindow.windowLevel <= UIWindowLevelNormal + 10 &&
-                    aWindow.rootViewController != nil &&
-                    !aWindow.rootViewController!.view.isHidden {
-                        topWindow = aWindow
-                        break
+            for aWindow in windows where aWindow.isKind(of: NSClassFromString("UITextEffectsWindow")!)
+                && aWindow.windowLevel <= UIWindowLevelNormal + 10 &&
+                aWindow.rootViewController != nil &&
+                !aWindow.rootViewController!.view.isHidden {
+                    topWindow = aWindow
+                    break
             }
             /*
-             topWindow = windows.filter({
-             $0.isKind(of: NSClassFromString("UITextEffectsWindow")!) &&
-             $0.windowLevel <= UIWindowLevelNormal + 10 &&
-             $0.rootViewController != nil &&
-             !$0.rootViewController!.view.isHidden
-             }).first
-             */
-            
-            
-            /*
-             for aWindow in windows {
-             if aWindow.isKind(of: NSClassFromString("UITextEffectsWindow")!)
-             && aWindow.windowLevel <= UIWindowLevelNormal + 10
-             && aWindow.rootViewController != nil
-             && !(aWindow.rootViewController?.view.isHidden)! {
-             topWindow = aWindow
-             break
-             }
-             }
+            for aWindow in windows {
+                if aWindow.isKind(of: NSClassFromString("UITextEffectsWindow")!)
+                    && aWindow.windowLevel <= UIWindowLevelNormal + 10
+                    && aWindow.rootViewController != nil
+                    && !(aWindow.rootViewController?.view.isHidden)! {
+                    topWindow = aWindow
+                    break
+                }
+            }
              */
         }
-        MJControllerManager.s_topWindow = topWindow
+        s_topWindow = topWindow
     }
 }
 
 /// Selector extension
 private extension Selector {
-    static let changeKeyWindow = #selector(MJWindowManager.changeKeyWindow(_:))
+    static let changeKeyWindow = #selector(MJControllerManager.changeKeyWindow(_:))
 }

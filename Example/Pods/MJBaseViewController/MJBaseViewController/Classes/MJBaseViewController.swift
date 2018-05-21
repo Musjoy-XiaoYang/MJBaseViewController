@@ -37,10 +37,8 @@ open class MJBaseViewController: UIViewController {
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !isViewHadShow {
-            
             // 解决部分界面第一次显示 ScrollView 显示异常问题
             guard #available(iOS 9.0, *) else { return }
-            
             guard let isHide = navigationController?.isNavigationBarHidden else { return }
             navigationController?.setNavigationBarHidden(!isHide, animated: false)
             navigationController?.setNavigationBarHidden(isHide, animated: true)
@@ -63,6 +61,11 @@ open class MJBaseViewController: UIViewController {
             NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
         }
         super.viewWillDisappear(animated)
+    }
+
+    override open func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 
@@ -145,8 +148,8 @@ extension MJBaseViewController {
             if bottomItem === view {
                 bottomItem = bottomLyt.secondItem
             }
-            guard let theView = bottomItem as? UIView else { return }
-            let theLyt1 = NSLayoutConstraint(item: theView,
+            guard let theView1 = bottomItem as? UIView else { return }
+            let theLyt1 = NSLayoutConstraint(item: theView1,
                                              attribute: .bottom,
                                              relatedBy: .equal,
                                              toItem: bottomLayoutGuide,
@@ -158,9 +161,6 @@ extension MJBaseViewController {
             lytBottom = theLyt1
             view.setNeedsLayout()
         }
-        
-        topLayout()
-        bottomLayout()
     }
     
     /// 将该 aTopView 与 topLayoutGuide 相连，调用该函数前必须确保 aTopView 在 self.view 内
@@ -194,13 +194,13 @@ extension MJBaseViewController {
     }
 }
 
-//#if canImport("")
+//#if MOUDLE_NETWORKING
 /// Loading
-//extension MJBaseViewController {
-//    private func loadingView() {
-//        
-//    }
-//}
+extension MJBaseViewController {
+    private func loadingView() {
+        
+    }
+}
 //#endif
 
 // MARK: - 键盘出现隐藏
@@ -216,3 +216,4 @@ public protocol KeyboardDelegate where Self: MJBaseViewController {
 fileprivate extension Selector {
     static let keyboardWillChangeFrame = #selector(MJBaseViewController.keyboardWillChangeFrame(_:))
 }
+

@@ -1,5 +1,5 @@
 PODS:
-  - MJBaseViewController (0.1.0)
+  - MJBaseViewController (0.0.1)
 
 DEPENDENCIES:
   - MJBaseViewController (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MJBaseViewController: 047dcd46ab94ad55df1fb1218997d9c1a05bbed3
+  MJBaseViewController: 3d027da93ffcc7aa98fa42150bef1cd17be4b87e
 
-PODFILE CHECKSUM: e8dcd9f7d1a015016e784b3abc0e58d720a5faa8
+PODFILE CHECKSUM: ee2c87beb82f2c77b7569ecae91a915959b4543e
 
 COCOAPODS: 1.4.0
